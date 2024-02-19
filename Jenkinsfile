@@ -1,11 +1,14 @@
 pipeline {
-    agent {
-        dockerContainer { image 'ubuntu:latest' }
-    }
+    agent any
     stages {
-        stage('Test') {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'node:20.11.1-alpine3.19'
+                }
+            }
             steps {
-                sh 'lsb_release -a'
+                sh 'node --version'
             }
         }
     }
