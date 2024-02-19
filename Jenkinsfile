@@ -1,14 +1,12 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:20.11.1-alpine3.19'
-                }
-            }
+            agent any
             steps {
-                sh 'node --version'
+                script {
+                    dockerImage = docker.build('python:3.10')
+                }
             }
         }
     }
