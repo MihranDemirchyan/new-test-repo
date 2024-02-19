@@ -1,12 +1,12 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
-            agent any
+        stage('Back-end') {
+            agent {
+                docker { image 'python:3.10' }
+            }
             steps {
-                script {
-                    dockerImage = docker.build('python:3.10')
-                }
+                sh 'python --version'
             }
         }
     }
