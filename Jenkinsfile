@@ -4,12 +4,6 @@ pipeline {
         DOCKER_IMAGE_NAME = "mihran03/testing-docker"
     }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Running build automation'
-                sh './gradlew build --no-daemon'
-            }
-        }
         stage('Build Docker Image') {
             steps {
                 script {
