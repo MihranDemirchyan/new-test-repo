@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = "mihran03/testing-docker"
+    }
     stages {
         stage('Build') {
             steps {
