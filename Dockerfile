@@ -1,10 +1,16 @@
-FROM python:latest
+FROM ubuntu:latest
 
-# Set the working directory in the container
-WORKDIR /app
+# Install a simple text editor (nano) just as an example
+RUN apt-get update && apt-get install -y vim
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Create a new directory called "myapp" in the container
+RUN mkdir /myapp
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Set /myapp as the working directory
+WORKDIR /myapp
+
+# Create a new file called "hello.txt" in the /myapp directory
+RUN echo "Hello, Docker!" > hello.txt
+
+# Define a command to display the contents of hello.txt when the container starts
+CMD cat hello.txt
